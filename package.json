@@ -2,12 +2,15 @@
     "name": "textproto-grammer",
     "displayName": "TextProto",
     "description": "Syntax Highlighting for the Protocol Buffer Text Format",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "thejustinwalsh",
     "author": {
         "name": "Justin Walsh"
     },
-    "keywords": ["protobuf", "protocol-buffers"],
+    "keywords": [
+        "protobuf",
+        "protocol-buffers"
+    ],
     "engines": {
         "vscode": "^1.51.0"
     },
@@ -18,24 +21,32 @@
     "galleryBanner": {
         "color": "#D3D0C8",
         "theme": "dark"
-      },
+    },
     "contributes": {
-        "languages": [{
-            "id": "textproto",
-            "aliases": ["textproto"],
-            "extensions": ["textproto"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "textproto",
-            "scopeName": "source.textproto",
-            "path": "./syntaxes/textproto.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "textproto",
+                "aliases": [
+                    "textproto"
+                ],
+                "extensions": [
+                    "textproto"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "textproto",
+                "scopeName": "source.textproto",
+                "path": "./syntaxes/textproto.tmLanguage.json"
+            }
+        ]
     },
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/thejustinwalsh/textproto-grammar.git"
-      },
+    },
     "homepage": "https://github.com/thejustinwalsh/textproto-grammar/blob/main/README.md"
 }
