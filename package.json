@@ -3,12 +3,21 @@
     "displayName": "TextProto",
     "description": "Syntax Highlighting for the Protocol Buffer Text Format",
     "version": "0.0.1",
+    "publisher": "thejustinwalsh",
+    "author": {
+        "name": "Justin Walsh"
+    },
     "engines": {
         "vscode": "^1.51.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#D3D0C8",
+        "theme": "dark"
+      },
     "contributes": {
         "languages": [{
             "id": "textproto",
@@ -21,5 +30,11 @@
             "scopeName": "source.textproto",
             "path": "./syntaxes/textproto.tmLanguage.json"
         }]
-    }
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thejustinwalsh/textproto-grammar.git"
+      },
+    "homepage": "https://github.com/thejustinwalsh/textproto-grammar/blob/main/README.md"
 }
