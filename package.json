@@ -1,0 +1,25 @@
+{
+    "name": "textproto-grammer",
+    "displayName": "TextProto",
+    "description": "Syntax Highlighting for the Protocol Buffer Text Format",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.51.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "textproto",
+            "aliases": ["textproto"],
+            "extensions": ["textproto"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "textproto",
+            "scopeName": "source.textproto",
+            "path": "./syntaxes/textproto.tmLanguage.json"
+        }]
+    }
+}

@@ -1,0 +1,215 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "textproto",
+	"patterns": [
+		{
+			"begin": "(^[ \\t]+)?(?=\\#)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.comment.leading.textproto"
+				}
+			},
+			"end": "(?!\\G)((?!^)[ \\t]+\\n)?",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.comment.trailing.textproto"
+				}
+			},
+			"patterns": [
+				{
+					"begin": "#",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.textproto"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.number-sign.textproto"
+				}
+			]
+		},
+		{
+			"include": "#value"
+		}
+	],
+	"repository": {
+		"array": {
+    		"begin": "\\[",
+    		"beginCaptures": {
+      			"0": {
+					"name": "punctuation.definition.array.begin.textproto"
+				}
+			},
+    		"end": "\\]",
+    		"endCaptures": {
+      			"0": {
+					"name": "punctuation.definition.array.end.textproto"
+				}
+			},
+    		"name": "meta.structure.array.textproto",
+    		"patterns": [
+      			{
+        			"include": "#comments"
+      			},
+      			{
+        			"include": "#value"
+      			},
+      			{
+        			"match": ",",
+        			"name": "punctuation.separator.array.textproto"
+      			},
+				{
+					"match": "[^\\s\\]]",
+					"name": "invalid.illegal.expected-array-separator.textproto"
+				}
+			]
+		},
+		"constant": {
+			"patterns": [
+				{
+    				"match": "\\b(?:true|false|null|Infinity|NaN)\\b",
+					"name": "constant.language.textproto"
+				},
+				{
+					"match": "\\b[A-Z]+[A-Z0-9]*(?:_[A-Z0-9]+)*\\b",
+					"name": "variable.other.readonly.textproto"
+				}
+			]
+		},
+		"infinity": {
+      		"match": "(-)*\\b(?:Infinity|NaN)\\b",
+			"name": "constant.language.textproto"
+		},
+  		"number": {
+    		"patterns": [
+      			{
+        			"comment": "handles hexadecimal numbers",
+        			"match": "(0x)[0-9a-fA-f]*",
+        			"name": "constant.numeric.hex.textproto"
+				},  
+      			{
+        			"comment": "handles integer and decimal numbers",
+        			"match": "[+-.]?(?=[1-9]|0(?!\\d))\\d+(\\.\\d+)?([eE][+-]?\\d+)?",
+        			"name": "constant.numeric.textproto"
+      			}
+			]
+		},
+		"object": {
+    		"begin": "\\{",
+    		"beginCaptures": {
+      			"0": {
+					"name": "punctuation.definition.dictionary.begin.textproto"
+				}
+			},
+			"comment": "a textproto object",
+    		"end": "\\}",
+    		"endCaptures": {
+      			"0": {
+					"name": "punctuation.definition.dictionary.end.textproto"
+				}
+			},
+    		"name": "meta.structure.dictionary.textproto",
+    		"patterns": [
+				{
+					"comment": "the textproto object key",
+					"include": "#key"
+				},
+				{
+					"begin": ":",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.separator.dictionary.key-value.textproto"
+						}
+					},
+					"end": "(\\n)|(?=\\})",
+					"endCaptures": {
+						"1": {
+							"name": "punctuation.separator.dictionary.pair.textproto"
+						}
+					},
+					"name": "meta.structure.dictionary.value.textproto",
+					"patterns": [
+						{
+							"comment": "the textproto object value",
+							"include": "#value"
+						}
+					]
+				},
+				{
+					"match": "[^\\s\\}]",
+					"name": "invalid.illegal.expected-dictionary-separator.textproto"
+				}
+			]
+		},
+		"stringDouble": {
+    		"begin": "[\"]",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.textproto"
+				}
+			},
+			"end": "[\"]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.textproto"
+				}
+			},
+			"name": "string.quoted.textproto",
+			"patterns": [
+				{
+					"match": "(?x:                # turn on extended mode\n                     \\\\                # a literal backslash\n                     (?:               # ...followed by...\n                       [\"\\\\/bfnrt]     # one of these characters\n                       |               # ...or...\n                       u               # a u\n                       [0-9a-fA-F]{4}  # and four hex digits\n                     )\n                   )",
+					"name": "constant.character.escape.textproto"
+				},
+				{
+					"match": "\\\\.",
+					"name": "invalid.illegal.unrecognized-string-escape.textproto"
+				}
+			]
+		},
+		"key": {
+			"match": "[a-zA-Z0-9_-]+(:|\\s(\\{))",
+			"captures": {
+				"0": { "name": "support.type.property-name.textproto" },
+				"1": { "name": "punctuation.separator.dictionary.key-value.textproto" },
+				"2": { "name": "punctuation.definition.dictionary.begin.textproto" }
+			}
+		},
+		"optional-key": {
+			"match": "(\\[[a-zA-Z0-9_-]+\\])(:|\\s(\\{))",
+			"captures": {
+				"1": { "name": "support.type.property-name.textproto" },
+				"2": { "name": "punctuation.separator.dictionary.key-value.textproto" },
+				"3": { "name": "punctuation.definition.dictionary.begin.textproto" }
+			}
+		},
+		"value": {
+			"patterns": [
+				{
+					"include": "#key"
+				},
+				{
+					"include": "#optional-key"
+				},
+				{
+					"include": "#constant"
+				},
+				{
+					"include": "#infinity"
+				},
+				{
+					"include": "#number"
+				},
+				{
+					"include": "#stringDouble"
+				},
+				{
+					"include": "#array"
+				},
+				{
+					"include": "#object"
+				}
+			]
+		}
+	},
+	"scopeName": "source.textproto"
+}
