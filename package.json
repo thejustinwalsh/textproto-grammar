@@ -2,7 +2,7 @@
     "name": "textproto-grammer",
     "displayName": "TextProto",
     "description": "Syntax Highlighting for the Protocol Buffer Text Format",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "thejustinwalsh",
     "author": {
         "name": "Justin Walsh"
@@ -20,7 +20,7 @@
     "icon": "images/icon.png",
     "galleryBanner": {
         "color": "#D3D0C8",
-        "theme": "dark"
+        "theme": "light"
     },
     "contributes": {
         "languages": [
