@@ -40,6 +40,16 @@
                 "language": "textproto",
                 "scopeName": "source.textproto",
                 "path": "./syntaxes/textproto.tmLanguage.json"
+            },
+            {
+                "scopeName": "markdown.textproto.codeblock",
+                "path": "./syntaxes/codeblock.json",
+                "injectTo": [
+                    "text.html.markdown"
+                ],
+                "embeddedLanguages": {
+                    "meta.embedded.block.textproto": "textproto"
+                }
             }
         ]
     },
