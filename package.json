@@ -27,10 +27,15 @@
             {
                 "id": "textproto",
                 "aliases": [
+                    "Protocol Buffer Text Format",
+                    "Textual Protobuf",
+                    "pbtxt",
                     "textproto"
                 ],
                 "extensions": [
-                    "textproto"
+                    ".pbtxt",
+                    ".prototxt",
+                    ".textproto"
                 ],
                 "configuration": "./language-configuration.json"
             }
