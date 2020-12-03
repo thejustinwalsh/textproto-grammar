@@ -1,37 +1,16 @@
 {
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-    "name": "textproto",
+    "name": "Protocol Buffer Text Format",
     "fileTypes": [
         "pbtxt",
         "prototxt",
         "textproto"
     ],
+    "foldingStartMarker": "(\\{|\\[)\\s*$",
+    "foldingStopMarker": "^\\s*(\\}|\\])\\s*$",
     "patterns": [
         {
-            "begin": "(^[ \\t]+)?(?=\\#)",
-            "beginCaptures": {
-                "1": {
-                    "name": "punctuation.whitespace.comment.leading.textproto"
-                }
-            },
-            "end": "(?!\\G)((?!^)[ \\t]+\\n)?",
-            "endCaptures": {
-                "1": {
-                    "name": "punctuation.whitespace.comment.trailing.textproto"
-                }
-            },
-            "patterns": [
-                {
-                    "begin": "#",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.comment.textproto"
-                        }
-                    },
-                    "end": "\\n",
-                    "name": "comment.line.number-sign.textproto"
-                }
-            ]
+            "include": "#comments"
         },
         {
             "include": "#value"
@@ -69,6 +48,32 @@
                 }
             ]
         },
+        "comments": {
+            "begin": "(^\\s+)?(?=#)",
+            "beginCaptures": {
+                "1": {
+                    "name": "punctuation.whitespace.comment.leading.textproto"
+                }
+            },
+            "end": "(?!\\G)",
+            "endCaptures": {
+                "1": {
+                    "name": "punctuation.whitespace.comment.trailing.textproto"
+                }
+            },
+            "patterns": [
+                {
+                    "begin": "#",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.textproto"
+                        }
+                    },
+                    "end": "$",
+                    "name": "comment.line.number-sign.textproto"
+                }
+            ]
+        },
         "constant": {
             "patterns": [
                 {
@@ -80,6 +85,24 @@
                     "name": "variable.other.readonly.textproto"
                 }
             ]
+        },
+        "heredoc": {
+            "begin": "(<<)\\s*([_a-zA-Z]+)\\s*$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.operator.heredoc.textproto"
+                },
+                "2": {
+                    "name": "keyword.control.heredoc-token.textproto"
+                }
+            },
+            "end": "^\\s*(\\2)\\s*$",
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.control.heredoc-token.textproto"
+                }
+            },
+            "name": "string.unquoted.heredoc.no-indent.textproto"
         },
         "infinity": {
             "match": "(-)*\\b(?:Infinity|NaN)\\b",
@@ -146,23 +169,23 @@
                 }
             ]
         },
-        "stringDouble": {
-            "begin": "[\"]",
+        "string": {
+            "begin": "\"",
             "beginCaptures": {
                 "0": {
                     "name": "punctuation.definition.string.begin.textproto"
                 }
             },
-            "end": "[\"]",
+            "end": "\"",
             "endCaptures": {
                 "0": {
                     "name": "punctuation.definition.string.end.textproto"
                 }
             },
-            "name": "string.quoted.textproto",
+            "name": "string.quoted.double.textproto",
             "patterns": [
                 {
-                    "match": "(?x:                # turn on extended mode\n                     \\\\                # a literal backslash\n                     (?:               # ...followed by...\n                       [\"\\\\/bfnrt]     # one of these characters\n                       |               # ...or...\n                       u               # a u\n                       [0-9a-fA-F]{4}  # and four hex digits\n                     )\n                   )",
+                    "match": "(?x:\\\\(?:[\"\\\\/bfnrt]|u[0-9a-fA-F]{4}))",
                     "name": "constant.character.escape.textproto"
                 },
                 {
@@ -217,7 +240,10 @@
                     "include": "#number"
                 },
                 {
-                    "include": "#stringDouble"
+                    "include": "#string"
+                },
+                {
+                    "include": "#heredoc"
                 },
                 {
                     "include": "#array"
