@@ -7,6 +7,9 @@
     "author": {
         "name": "Justin Walsh"
     },
+    "contributors": [
+        "Marcus R. Brown <contact@marcusrbrown.com>"
+    ],
     "keywords": [
         "protobuf",
         "protocol-buffers"
