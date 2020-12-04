@@ -25,6 +25,8 @@
         "color": "#D3D0C8",
         "theme": "light"
     },
+    "main": "extension.js",
+    "activationEvents": [],
     "contributes": {
         "languages": [
             {
@@ -33,6 +35,7 @@
                     "Protocol Buffer Text Format",
                     "Textual Protobuf",
                     "pbtxt",
+                    "prototxt",
                     "textproto"
                 ],
                 "extensions": [
@@ -59,12 +62,34 @@
                     "meta.embedded.block.textproto": "textproto"
                 }
             }
-        ]
+        ],
+        "markdown.markdownItPlugins": true
     },
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/thejustinwalsh/textproto-grammar.git"
     },
-    "homepage": "https://github.com/thejustinwalsh/textproto-grammar/blob/main/README.md"
+    "homepage": "https://github.com/thejustinwalsh/textproto-grammar/blob/main/README.md",
+    "scripts": {
+        "lint": "eslint .",
+        "test": "npm run lint"
+    },
+    "eslintConfig": {
+        "extends": "amex",
+        "rules": {
+            "indent": [
+                "error",
+                4
+            ]
+        }
+    },
+    "dependencies": {
+        "highlight.js": "^10.4.1",
+        "markdown-it-highlightjs": "^3.4.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.14.0",
+        "eslint-config-amex": "^13.1.0"
+    }
 }
