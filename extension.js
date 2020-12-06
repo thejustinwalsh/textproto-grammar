@@ -68,3 +68,25 @@ module.exports.activate = () => ({
         return md;
     },
 });
+
+/** @typedef {(hljs: HLJSApi) => Language} LanguageFn */
+
+/**
+ * @callback Highlighter
+ * @param {string} code
+ * @param {string} languageName
+ * @returns {string}
+ */
+
+/**
+ * @callback MarkdownItPlugin
+ * @param {MarkdownIt} md
+ * @param {*} opts
+ */
+
+/**
+ * @typedef {object} MarkdownIt
+ * @property {object} options
+ * @property {Highlighter} options.highlight
+ * @property {(plugin: MarkdownItPlugin, ...args: any[]) => void} use
+ */

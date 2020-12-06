@@ -1,3 +1,9 @@
 .vscode/**
 .vscode-test/**
 .gitignore
+.github
+extension.js
+jsconfig.json
+rollup.config.js
+node_modules
+*.js.map

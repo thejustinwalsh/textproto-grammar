@@ -25,7 +25,7 @@
         "color": "#D3D0C8",
         "theme": "light"
     },
-    "main": "extension.js",
+    "main": "bundle.js",
     "activationEvents": [],
     "contributes": {
         "languages": [
@@ -72,16 +72,24 @@
     },
     "homepage": "https://github.com/thejustinwalsh/textproto-grammar/blob/main/README.md",
     "scripts": {
+        "build": "npm run clean && rollup -c",
+        "clean": "rimraf bundle.js bundle.js.map",
         "lint": "eslint .",
-        "test": "npm run lint"
+        "test": "npm run lint",
+        "watch": "cross-env NODE_ENV=development npm run build -- --watch",
+        "vscode:prepublish": "cross-env NODE_ENV=production npm run build"
     },
     "eslintConfig": {
         "extends": "amex",
+        "ignorePatterns": [
+            "bundle.js"
+        ],
         "rules": {
             "indent": [
                 "error",
                 4
-            ]
+            ],
+            "global-require": "off"
         }
     },
     "dependencies": {
@@ -89,7 +97,14 @@
         "markdown-it-highlightjs": "^3.4.0"
     },
     "devDependencies": {
+        "@rollup/plugin-commonjs": "^17.0.0",
+        "@rollup/plugin-node-resolve": "^11.0.0",
+        "@tsconfig/node12": "^1.0.7",
+        "cross-env": "^7.0.3",
         "eslint": "^7.14.0",
-        "eslint-config-amex": "^13.1.0"
+        "eslint-config-amex": "^13.1.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.34.1",
+        "rollup-plugin-terser": "^7.0.2"
     }
 }
