@@ -13,6 +13,12 @@
             "include": "#comments"
         },
         {
+            "include": "#string-single"
+        },
+        {
+            "include": "#string-double"
+        },
+        {
             "include": "#key"
         },
         {
@@ -71,6 +77,12 @@
             "patterns": [
                 {
                     "include": "#comments"
+                },
+                {
+                    "include": "#string-single"
+                },
+                {
+                    "include": "#string-double"
                 },
                 {
                     "include": "#key"
@@ -211,7 +223,7 @@
             "begin": "[a-zA-Z0-9_\\.-]+(\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "entity.name.type.textproto"
+                    "name": "entity.name.tag.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
@@ -229,7 +241,7 @@
             "begin": "\\[[a-zA-Z0-9_\\.-]+\\](\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "entity.name.tag.textproto"
+                    "name": "entity.other.attribute-name.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
