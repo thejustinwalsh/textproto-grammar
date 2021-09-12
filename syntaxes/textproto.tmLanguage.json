@@ -17,6 +17,9 @@
         },
         {
             "include": "#optional-key"
+        },
+        {
+            "include": "#field"
         }
     ],
     "repository": {
@@ -74,6 +77,9 @@
                 },
                 {
                     "include": "#optional-key"
+                },
+                {
+                    "include": "#field"
                 }
             ]
         },
@@ -202,16 +208,17 @@
             ]
         },
         "key": {
-            "begin": "[a-zA-Z0-9_\\.-]+(:|\\s)",
+            "begin": "[a-zA-Z0-9_\\.-]+(\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "support.type.property-name.textproto"
+                    "name": "entity.name.type.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             },
             "end": "\\n",
+            "name": "entity.name.textproto",
             "patterns": [
                 {
                     "include": "#value"
@@ -219,16 +226,35 @@
             ]
         },
         "optional-key": {
-            "begin": "\\[[a-zA-Z0-9_\\.-]+\\](:|\\s)",
+            "begin": "\\[[a-zA-Z0-9_\\.-]+\\](\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "support.type.property-name.textproto"
+                    "name": "entity.name.tag.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             },
             "end": "\\n",
+            "name": "entity.name.textproto",
+            "patterns": [
+                {
+                    "include": "#value"
+                }
+            ]
+        },
+        "field": {
+            "begin": "\\[?[a-zA-Z0-9_\\.-]+\\]?(:)",
+            "beginCaptures": {
+                "0": {
+                    "name": "meta.structure.dictionary.value.textproto"
+                },
+                "1": {
+                    "name": "punctuation.separator.dictionary.key-value.textproto"
+                }
+            },
+            "end": "\\n",
+            "name": "support.type.property-name.textproto",
             "patterns": [
                 {
                     "include": "#value"
