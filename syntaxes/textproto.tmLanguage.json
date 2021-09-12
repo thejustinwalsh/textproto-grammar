@@ -223,14 +223,14 @@
             "begin": "[a-zA-Z0-9_\\.-]+(\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "entity.name.tag.textproto"
+                    "name": "meta.structure.dictionary.value.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             },
             "end": "\\n",
-            "name": "entity.name.textproto",
+            "name": "support.type.property-name.textproto",
             "patterns": [
                 {
                     "include": "#value"
@@ -241,14 +241,14 @@
             "begin": "\\[[a-zA-Z0-9_\\.-]+\\](\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "entity.other.attribute-name.textproto"
+                    "name": "meta.structure.dictionary.value.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             },
             "end": "\\n",
-            "name": "entity.name.textproto",
+            "name": "support.type.property-name.textproto",
             "patterns": [
                 {
                     "include": "#value"
