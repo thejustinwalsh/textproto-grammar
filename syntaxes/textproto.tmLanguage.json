@@ -122,54 +122,7 @@
                 }
             ]
         },
-        "object": {
-            "begin": "\\{",
-            "beginCaptures": {
-                "0": {
-                    "name": "punctuation.definition.dictionary.begin.textproto"
-                }
-            },
-            "comment": "a textproto object",
-            "end": "\\}",
-            "endCaptures": {
-                "0": {
-                    "name": "punctuation.definition.dictionary.end.textproto"
-                }
-            },
-            "name": "meta.structure.dictionary.textproto",
-            "patterns": [
-                {
-                    "comment": "the textproto object key",
-                    "include": "#key"
-                },
-                {
-                    "begin": ":",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.separator.dictionary.key-value.textproto"
-                        }
-                    },
-                    "end": "(\\n)|(?=\\})",
-                    "endCaptures": {
-                        "1": {
-                            "name": "punctuation.separator.dictionary.pair.textproto"
-                        }
-                    },
-                    "name": "meta.structure.dictionary.value.textproto",
-                    "patterns": [
-                        {
-                            "comment": "the textproto object value",
-                            "include": "#value"
-                        }
-                    ]
-                },
-                {
-                    "match": "[^\\s\\}]",
-                    "name": "invalid.illegal.expected-dictionary-separator.textproto"
-                }
-            ]
-        },
-        "string": {
+        "string-double": {
             "begin": "\"",
             "beginCaptures": {
                 "0": {
@@ -194,8 +147,33 @@
                 }
             ]
         },
+        "string-single": {
+            "begin": "'",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.begin.textproto"
+                }
+            },
+            "end": "'",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.textproto"
+                }
+            },
+            "name": "string.quoted.double.textproto",
+            "patterns": [
+                {
+                    "match": "(?x:\\\\(?:[\"\\\\/bfnrt]|u[0-9a-fA-F]{4}))",
+                    "name": "constant.character.escape.textproto"
+                },
+                {
+                    "match": "\\\\.",
+                    "name": "invalid.illegal.unrecognized-string-escape.textproto"
+                }
+            ]
+        },
         "key": {
-            "match": "[a-zA-Z0-9_-]+(:|\\s(\\{))",
+            "match": "[a-zA-Z0-9_\\.-]+(:|\\s(\\{))",
             "captures": {
                 "0": {
                     "name": "support.type.property-name.textproto"
@@ -209,18 +187,22 @@
             }
         },
         "optional-key": {
-            "match": "(\\[[a-zA-Z0-9_-]+\\])(:|\\s(\\{))",
+            "match": "\\[[a-zA-Z0-9_\\.-]+\\](:|\\s(\\{))",
             "captures": {
-                "1": {
+                "0": {
                     "name": "support.type.property-name.textproto"
                 },
-                "2": {
+                "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
                 },
-                "3": {
+                "2": {
                     "name": "punctuation.definition.dictionary.begin.textproto"
                 }
             }
+        },
+        "key-end": {
+            "match": "\\}",
+            "name": "punctuation.definition.dictionary.end.textproto"
         },
         "value": {
             "patterns": [
@@ -240,7 +222,10 @@
                     "include": "#number"
                 },
                 {
-                    "include": "#string"
+                    "include": "#string-double"
+                },
+                {
+                    "include": "#string-single"
                 },
                 {
                     "include": "#heredoc"
@@ -249,7 +234,7 @@
                     "include": "#array"
                 },
                 {
-                    "include": "#object"
+                    "include": "#key-end"
                 }
             ]
         }
