@@ -189,10 +189,10 @@
                     "name": "punctuation.definition.string.end.textproto"
                 }
             },
-            "name": "string.quoted.double.textproto",
+            "name": "string.quoted.single.textproto",
             "patterns": [
                 {
-                    "match": "(?x:\\\\(?:[\"\\\\/bfnrt]|u[0-9a-fA-F]{4}))",
+                    "match": "(?x:\\\\(?:[\\'\\\\/bfnrt]|u[0-9a-fA-F]{4}))",
                     "name": "constant.character.escape.textproto"
                 },
                 {
