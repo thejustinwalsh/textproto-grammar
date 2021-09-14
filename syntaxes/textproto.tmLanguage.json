@@ -223,7 +223,7 @@
             "begin": "[a-zA-Z0-9_\\.-]+(\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "meta.structure.dictionary.value.textproto"
+                    "name": "entity.name.textproto meta.structure.dictionary.value.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
@@ -241,7 +241,7 @@
             "begin": "\\[[a-zA-Z0-9_\\.-]+\\](\\s+)",
             "beginCaptures": {
                 "0": {
-                    "name": "meta.structure.dictionary.value.textproto"
+                    "name": "entity.name.textproto meta.structure.dictionary.value.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
@@ -259,7 +259,7 @@
             "begin": "\\[?[a-zA-Z0-9_\\.-]+\\]?(:)",
             "beginCaptures": {
                 "0": {
-                    "name": "meta.structure.dictionary.value.textproto"
+                    "name": "variable.textproto meta.structure.dictionary.value.textproto"
                 },
                 "1": {
                     "name": "punctuation.separator.dictionary.key-value.textproto"
