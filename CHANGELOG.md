@@ -31,7 +31,7 @@ CI workflow including release and publishing to VS Code Marketplace
 
 ### 0.0.6 - 2021-09-13
 
-Refactor syntax highlighting
-Adds support for single quote strings
-Fixes bug in nested object handling
-More lenient object field parsing
+Refactor syntax highlighting  
+Adds support for single quote strings  
+Fixes bug in nested object handling  
+More lenient object field parsing  
