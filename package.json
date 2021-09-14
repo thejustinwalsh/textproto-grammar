@@ -5,14 +5,21 @@
     "version": "0.0.6",
     "publisher": "thejustinwalsh",
     "author": {
-        "name": "Justin Walsh"
+        "name": "Justin Walsh <contact.me@thejustinwalsh.com>"
     },
     "contributors": [
         "Marcus R. Brown <contact@marcusrbrown.com>"
     ],
     "keywords": [
+        "pbtxt",
         "protobuf",
-        "protocol-buffers"
+        "protocol-buffers",
+        "prototxt",
+        "syntax-highlighting",
+        "textproto",
+        "textproto-grammar",
+        "text-proto",
+        "text-proto-grammar"
     ],
     "engines": {
         "vscode": "^1.51.0"
