@@ -39,3 +39,7 @@ More lenient object field parsing
 ### 0.0.7 - 2021-09-14
 
 Better highlighting on GitHub  
+
+### 0.0.8 - 2021-09-14
+
+Update highlight-reel preview image  
