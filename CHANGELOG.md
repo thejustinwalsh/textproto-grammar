@@ -35,3 +35,7 @@ Refactor syntax highlighting
 Adds support for single quote strings  
 Fixes bug in nested object handling  
 More lenient object field parsing  
+
+### 0.0.7 - 2021-09-14
+
+Better highlighting on GitHub  
