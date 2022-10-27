@@ -22,7 +22,7 @@
         "text-proto-grammar"
     ],
     "engines": {
-        "vscode": "^1.51.0"
+        "vscode": "^1.62.0"
     },
     "categories": [
         "Programming Languages"
@@ -94,6 +94,8 @@
         "@rollup/plugin-commonjs": "^17.0.0",
         "@rollup/plugin-node-resolve": "^11.0.0",
         "@tsconfig/node16": "^1.0.3",
+        "@types/node": "^16.18.2",
+        "@types/vscode": "^1.62.0",
         "cross-env": "^7.0.3",
         "eslint": "^7.14.0",
         "rimraf": "^3.0.2",
