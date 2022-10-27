@@ -1,15 +1,16 @@
-extends: "eslint:recommended"
+extends:
+  - eslint:recommended
+  - prettier
 env:
   browser: true
   es6: true
   node: true
 ignorePatterns:
-  - "bundle.js"
+  - bundle.js
 rules:
-  indent: [error, 4]
   global-require: off
 overrides:
-  - files: ["rollup.config.js"]
+  - files: [rollup.config.js]
     parserOptions:
       sourceType: module
     rules:
