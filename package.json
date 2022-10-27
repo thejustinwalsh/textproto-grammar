@@ -86,19 +86,6 @@
         "watch": "cross-env NODE_ENV=development npm run build -- --watch",
         "vscode:prepublish": "cross-env NODE_ENV=production npm run build"
     },
-    "eslintConfig": {
-        "extends": "amex",
-        "ignorePatterns": [
-            "bundle.js"
-        ],
-        "rules": {
-            "indent": [
-                "error",
-                4
-            ],
-            "global-require": "off"
-        }
-    },
     "dependencies": {
         "highlight.js": "^10.4.1",
         "markdown-it-highlightjs": "^3.4.0"
@@ -109,7 +96,6 @@
         "@tsconfig/node12": "^1.0.7",
         "cross-env": "^7.0.3",
         "eslint": "^7.14.0",
-        "eslint-config-amex": "^13.1.0",
         "rimraf": "^3.0.2",
         "rollup": "^2.34.1",
         "rollup-plugin-terser": "^7.0.2"

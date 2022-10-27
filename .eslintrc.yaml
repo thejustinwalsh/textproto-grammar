@@ -1,0 +1,16 @@
+extends: "eslint:recommended"
+env:
+  browser: true
+  es6: true
+  node: true
+ignorePatterns:
+  - "bundle.js"
+rules:
+  indent: [error, 4]
+  global-require: off
+overrides:
+  - files: ["rollup.config.js"]
+    parserOptions:
+      sourceType: module
+    rules:
+      global-require: error
