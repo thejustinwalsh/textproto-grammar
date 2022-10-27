@@ -4,8 +4,5 @@
         "checkJs": true,
         "resolveJsonModule": true
     },
-    "exclude": [
-        "node_modules",
-        "bundle.js"
-    ]
+    "exclude": ["node_modules", "bundle.js"]
 }
