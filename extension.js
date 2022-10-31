@@ -2,10 +2,9 @@ const getAliases = () => {
     const packageJson = require('./package.json');
     const {
         contributes: {
-            languages: [{
-                id: languageId = 'textproto',
-                aliases: languageAliases = [],
-            }],
+            languages: [
+                { id: languageId = 'textproto', aliases: languageAliases = [] },
+            ],
         },
     } = packageJson;
     const aliases = languageAliases
@@ -53,7 +52,7 @@ const textproto = (hljs) => {
 };
 
 module.exports.activate = () => ({
-    extendMarkdownIt(/** @type MarkdownIt */md) {
+    extendMarkdownIt(/** @type MarkdownIt */ md) {
         const { highlight: defaultHighlight } = md.options;
         md.use(require('markdown-it-highlightjs/core'), {
             hljs: require('highlight.js/lib/core'),
@@ -62,9 +61,8 @@ module.exports.activate = () => ({
             },
         });
         const { highlight: coreHighlight } = md.options;
-        // eslint-disable-next-line no-param-reassign
-        md.options.highlight = (code, lang) => coreHighlight(code, lang)
-            || defaultHighlight(code, lang);
+        md.options.highlight = (code, lang) =>
+            coreHighlight(code, lang) || defaultHighlight(code, lang);
         return md;
     },
 });

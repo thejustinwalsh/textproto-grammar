@@ -1,0 +1,17 @@
+extends:
+  - eslint:recommended
+  - prettier
+env:
+  browser: true
+  es6: true
+  node: true
+ignorePatterns:
+  - bundle.js
+rules:
+  global-require: off
+overrides:
+  - files: [rollup.config.js]
+    parserOptions:
+      sourceType: module
+    rules:
+      global-require: error

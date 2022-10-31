@@ -24,22 +24,22 @@ Ran npm version by mistake :rocket:
 
 ### 0.0.5 - 2020-12-08
 
-Epic PR from [@igetgames](https://github.com/thejustinwalsh/textproto-grammar/pull/5)!  
-Adds highlighting syntax within fenced code blocks in Markdown preview  
-Extension bundling with Rollup  
+Epic PR from [@marcusrbrown](https://github.com/thejustinwalsh/textproto-grammar/pull/5)!
+Adds highlighting syntax within fenced code blocks in Markdown preview
+Extension bundling with Rollup
 CI workflow including release and publishing to VS Code Marketplace
 
 ### 0.0.6 - 2021-09-13
 
-Refactor syntax highlighting  
-Adds support for single quote strings  
-Fixes bug in nested object handling  
-More lenient object field parsing  
+Refactor syntax highlighting
+Adds support for single quote strings
+Fixes bug in nested object handling
+More lenient object field parsing
 
 ### 0.0.7 - 2021-09-14
 
-Better highlighting on GitHub  
+Better highlighting on GitHub
 
 ### 0.0.8 - 2021-09-14
 
-Update highlight-reel preview image  
+Update highlight-reel preview image

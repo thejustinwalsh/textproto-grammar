@@ -22,7 +22,7 @@
         "text-proto-grammar"
     ],
     "engines": {
-        "vscode": "^1.51.0"
+        "vscode": "^1.62.0"
     },
     "categories": [
         "Programming Languages"
@@ -81,23 +81,12 @@
     "scripts": {
         "build": "npm run clean && rollup -c",
         "clean": "rimraf bundle.js bundle.js.map",
+        "format:check": "prettier --check .",
+        "format:fix": "prettier --write .",
         "lint": "eslint .",
-        "test": "npm run lint",
+        "test": "npm run format:check && npm run lint",
         "watch": "cross-env NODE_ENV=development npm run build -- --watch",
         "vscode:prepublish": "cross-env NODE_ENV=production npm run build"
-    },
-    "eslintConfig": {
-        "extends": "amex",
-        "ignorePatterns": [
-            "bundle.js"
-        ],
-        "rules": {
-            "indent": [
-                "error",
-                4
-            ],
-            "global-require": "off"
-        }
     },
     "dependencies": {
         "highlight.js": "^10.4.1",
@@ -106,10 +95,13 @@
     "devDependencies": {
         "@rollup/plugin-commonjs": "^17.0.0",
         "@rollup/plugin-node-resolve": "^11.0.0",
-        "@tsconfig/node12": "^1.0.7",
+        "@tsconfig/node16": "^1.0.3",
+        "@types/node": "^16.18.2",
+        "@types/vscode": "^1.62.0",
         "cross-env": "^7.0.3",
         "eslint": "^7.14.0",
-        "eslint-config-amex": "^13.1.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.7.1",
         "rimraf": "^3.0.2",
         "rollup": "^2.34.1",
         "rollup-plugin-terser": "^7.0.2"
