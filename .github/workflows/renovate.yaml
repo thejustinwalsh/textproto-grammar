@@ -1,0 +1,17 @@
+name: Renovate
+
+on:
+  # schedule:
+  #   - cron: "0/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: renovatebot/github-action@v34
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN }}
+        env:
+          RENOVATE_CONFIG: '{"extends": "thejustinwalsh/textproto-grammar//.github/renovate.json"}'
+          RENOVATE_PLATFORM: github

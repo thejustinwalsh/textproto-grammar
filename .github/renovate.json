@@ -1,0 +1,6 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "description": "Renovate configuration for textproto-grammar",
+    "extends": ["config:base", ":disableDependencyDashboard"],
+    "ignorePresets": [":dependencyDashboard"]
+}
