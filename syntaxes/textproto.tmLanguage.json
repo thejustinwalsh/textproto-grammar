@@ -92,7 +92,7 @@
             ]
         },
         "comments": {
-            "begin": "(\\s+)?(?=#)",
+            "begin": "(?:[^#\\s]*(\\s+))?(?=#)",
             "beginCaptures": {
                 "1": {
                     "name": "punctuation.whitespace.comment.leading.textproto"
