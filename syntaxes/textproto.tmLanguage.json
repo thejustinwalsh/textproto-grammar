@@ -211,7 +211,7 @@
                     "name": "entity.name.textproto meta.structure.dictionary.value.textproto"
                 }
             },
-            "end": "(?=\\s+#)|$",
+            "end": "(?=\\s+#)|\\n",
             "name": "support.type.property-name.textproto",
             "patterns": [
                 {
