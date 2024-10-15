@@ -1,0 +1,146 @@
+// SYNTAX TEST "source.textproto" "Comment unittests"
+// This file is intended to be used with the vscode-tmgrammar-test package.
+ 
+# test nominal single line comment
+// <- punctuation.definition.comment.textproto
+// <---------------------------------- comment.line.number-sign.textproto
+
+#      test leading whitespace after hash
+// <- punctuation.definition.comment.textproto
+// <----------------------------------------- comment.line.number-sign.textproto
+
+# test trailing whitespace    
+// <- punctuation.definition.comment.textproto
+// <------------------------------- comment.line.number-sign.textproto
+//                        ^^^^^ punctuation.whitespace.comment.trailing.textproto
+
+#test without space
+// <- punctuation.definition.comment.textproto
+// <------------------ comment.line.number-sign.textproto
+
+   #test with indent
+// <--- punctuation.whitespace.comment.leading.textproto
+// ^ punctuation.definition.comment.textproto
+// ^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto
+
+   # test with indent and space
+// <--- punctuation.whitespace.comment.leading.textproto
+// ^ punctuation.definition.comment.textproto
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto
+
+   # test with indent and space and trailing space    
+// <--- punctuation.whitespace.comment.leading.textproto
+// ^ punctuation.definition.comment.textproto
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto
+//                                                ^^^^ punctuation.whitespace.comment.trailing.textproto
+
+value: [1,2,3] #test no space
+//            ^ punctuation.whitespace.comment.leading.textproto
+//             ^ punctuation.definition.comment.textproto
+//             ^^^^^^^^^^^^^^ comment.line.number-sign.textproto
+
+value: [1,2,3] # test space
+//            ^ punctuation.whitespace.comment.leading.textproto
+//             ^ punctuation.definition.comment.textproto
+//             ^^^^^^^^^^^^ comment.line.number-sign.textproto
+
+value: [1,2,3]# should FAIL to recognize due to no space
+//            ^ - punctuation.definition.comment.textproto
+//             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ - comment.line.number-sign.textproto
+
+multiline_array: [ # test after array
+//                ^ punctuation.whitespace.comment.leading.textproto
+//                 ^ punctuation.definition.comment.textproto
+//                   ^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+  {},{} # test after dictionary array entry
+//     ^ punctuation.whitespace.comment.leading.textproto
+//      ^ punctuation.definition.comment.textproto
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+] #test end of array
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~----------------- comment.line.number-sign.textproto         
+
+multiline_array:
+[ # existing limitation: brace on a new line is not recognized as begin token
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~-------------------------------------------------------------------------- comment.line.number-sign.textproto         
+  {},{} # test after dictionary array entry
+//     ^ punctuation.whitespace.comment.leading.textproto
+//      ^ punctuation.definition.comment.textproto
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+] #test end of array
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~----------------- comment.line.number-sign.textproto         
+
+multiline_value: "a" "b" # test after multiple strings
+//                      ^ punctuation.whitespace.comment.leading.textproto
+//                       ^ punctuation.definition.comment.textproto
+//                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+   "c" # test after newline string
+//    ^ punctuation.whitespace.comment.leading.textproto
+//     ^ punctuation.definition.comment.textproto
+//     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+
+next_value: 1233545 # test after constant
+//                 ^ punctuation.whitespace.comment.leading.textproto
+//                  ^ punctuation.definition.comment.textproto
+//                  ^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+
+string_value: "#test within quote" "this" # test after hash in quote
+//             ^ - punctuation.definition.comment.textproto
+//             ^^^^^^^^^^^^^^^^^^ - comment.line.number-sign.textproto         
+//                                       ^ punctuation.whitespace.comment.leading.textproto
+//                                        ^ punctuation.definition.comment.textproto
+//                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+
+dict_value # test before dict value
+//        ^ punctuation.whitespace.comment.leading.textproto
+//         ^ punctuation.definition.comment.textproto
+//         ^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+{ # brace on a new line is not recognized as begin token
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~------------------------------------------------------ comment.line.number-sign.textproto         
+} # test on end token after newline start
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~------------------------------------------------------ comment.line.number-sign.textproto         
+
+dict_value { # test after dict start token on same line
+//          ^ punctuation.whitespace.comment.leading.textproto
+//           ^ punctuation.definition.comment.textproto
+//           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+  embed_1: "abc" # test after dict entry
+//              ^ punctuation.whitespace.comment.leading.textproto
+//               ^ punctuation.definition.comment.textproto
+//               ^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+  embed_2: 132535 # test after dict entry
+//               ^ punctuation.whitespace.comment.leading.textproto
+//                ^ punctuation.definition.comment.textproto
+//                ^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+} # test on end token after same-line start  
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~----------------------------------------- comment.line.number-sign.textproto         
+
+[optional value]: 10 # test after optional value
+//                  ^ punctuation.whitespace.comment.leading.textproto
+//                   ^ punctuation.definition.comment.textproto
+//                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+  #test between code
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~----------------------------------------- comment.line.number-sign.textproto         
+  # test successive lines
+// <~- punctuation.whitespace.comment.leading.textproto
+// <~~- punctuation.definition.comment.textproto
+// <~~----------------------------------------- comment.line.number-sign.textproto         
+
+[test]: #{dict:"value"} # test commented value
+//     ^ punctuation.whitespace.comment.leading.textproto
+//      ^ punctuation.definition.comment.textproto
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign.textproto         
+//                      ^ - punctuation.definition.comment.textproto
