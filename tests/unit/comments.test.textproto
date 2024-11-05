@@ -1,0 +1,5 @@
+// SYNTAX TEST "source.textproto" "comment tests"
+
+ # test nominal single line comment
+ // <- punctuation.definition.comment.textproto
+ // <---------------------------------- comment.line.number-sign.textproto

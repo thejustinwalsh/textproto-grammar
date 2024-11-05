@@ -1,0 +1,22 @@
+// SYNTAX TEST "source.textproto" "message tests"
+
+pet {
+//<- support.type.property-name.textproto
+//  ^ punctuation.definition.dictionary.begin.textproto
+  kind: DOG
+//^support.type.property-name.textproto
+//^meta.structure.dictionary.value.textproto
+//    ^ punctuation.separator.dictionary.key-value.textproto
+//      ^^^ variable.other.readonly.textproto
+  name: "Fluffy"
+//^support.type.property-name.textproto
+//^meta.structure.dictionary.value.textproto
+//    ^ punctuation.separator.dictionary.key-value.textproto
+//      ^^^^^^^^ string.quoted.double.textproto
+  tail_wagginess: 0xA6
+//^support.type.property-name.textproto
+//^meta.structure.dictionary.value.textproto
+//              ^ punctuation.separator.dictionary.key-value.textproto
+//                ^^^^ constant.numeric.hex.textproto
+}
+//<- punctuation.definition.dictionary.end.textproto

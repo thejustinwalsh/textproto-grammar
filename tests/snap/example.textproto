@@ -1,0 +1,41 @@
+# This is a comment
+# hi there
+
+b { c {
+    d: 5
+  }}
+
+  a {
+    b: {
+      c {
+        d: 1043E-04f
+        f: 0xfffFF00aeF
+        reg_scalar: 10
+        reg_scalar: -inf
+        reg_message { foo: "bar" }
+        [com.foo.ext.scalar]: 10
+        [com.foo.ext.message] { foo: "bar" }
+
+        any_value {
+          [type.googleapis.com/com.foo.any] { foo: "bar" }
+        }
+        nums: [
+          1,
+          2,
+          3,
+          4
+        ],
+        objs: [
+          { a: 1 },
+          { a: 2 },
+          { a: 3 },
+          { a: 4 },
+        ],
+        nums2: 3,
+        nums2: 3,
+        nums2: 3,
+        nums2: 3,
+        nums2: 3,
+      }
+    }
+  }
