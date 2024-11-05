@@ -92,30 +92,19 @@
             ]
         },
         "comments": {
-            "begin": "(^\\s+)?(?=#)",
-            "beginCaptures": {
+            "match": "(\\s*)(#).*?(\\s*$)",
+            "name": "comment.line.number-sign.textproto",
+            "captures": {
                 "1": {
                     "name": "punctuation.whitespace.comment.leading.textproto"
-                }
-            },
-            "end": "(?!\\G)",
-            "endCaptures": {
-                "1": {
+                },
+                "2": {
+                    "name": "punctuation.definition.comment.textproto"
+                },
+                "3": {
                     "name": "punctuation.whitespace.comment.trailing.textproto"
                 }
-            },
-            "patterns": [
-                {
-                    "begin": "#",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.comment.textproto"
-                        }
-                    },
-                    "end": "$",
-                    "name": "comment.line.number-sign.textproto"
-                }
-            ]
+            }
         },
         "constant": {
             "patterns": [
@@ -160,7 +149,7 @@
                 },
                 {
                     "comment": "handles integer and decimal numbers",
-                    "match": "[+-.]?(?=[1-9]|0(?!\\d))\\d+(\\.\\d+)?([eE][+-]?\\d+)?",
+                    "match": "(-?\\s*)(?=[1-9]|0(?!\\d))\\d+(\\.\\d+)?([eE][+-]?\\d+)?",
                     "name": "constant.numeric.textproto"
                 }
             ]
@@ -216,20 +205,21 @@
             ]
         },
         "key": {
-            "begin": "[a-zA-Z0-9_\\.-]+(\\s+)",
+            "begin": "[a-zA-Z0-9_\\.-]+(?=\\s+)",
             "beginCaptures": {
                 "0": {
                     "name": "entity.name.textproto meta.structure.dictionary.value.textproto"
-                },
-                "1": {
-                    "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             },
-            "end": "\\n",
+            "end": "(?=\\s+#)|\\n",
             "name": "support.type.property-name.textproto",
             "patterns": [
                 {
                     "include": "#value"
+                },
+                {
+                    "match": "\\s",
+                    "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             ]
         },
@@ -243,7 +233,7 @@
                     "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             },
-            "end": "\\n",
+            "end": "(?=\\s+#)|\\n",
             "name": "support.type.property-name.textproto",
             "patterns": [
                 {
@@ -261,7 +251,7 @@
                     "name": "punctuation.separator.dictionary.key-value.textproto"
                 }
             },
-            "end": "\\n",
+            "end": "(?=\\s+#)|\\n",
             "name": "support.type.property-name.textproto",
             "patterns": [
                 {
