@@ -48,7 +48,9 @@
                 "extensions": [
                     ".pbtxt",
                     ".prototxt",
-                    ".textproto"
+                    ".textpb",
+                    ".textproto",
+                    ".txtpb"
                 ],
                 "configuration": "./language-configuration.json"
             }
